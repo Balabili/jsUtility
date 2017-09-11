@@ -43,6 +43,30 @@ eventHelper.removeHandler = function (element, type, handler) {
     }
 };
 
+eventHelper.getEvent = function (event) {
+    return event ? event : window.event;
+}
+
+eventHelper.getTarget = function (event) {
+    return event.target || window.srcElement;
+}
+
+eventHelper.preventDefault = function (event) {
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false
+    }
+}
+
+eventHelper.stopPropagation = function (event) {
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.cancelBubble = true;
+    }
+}
+
 // -----------------cookieHelper-----------------
 
 cookieHelper.setCookie = function (name, value) {
